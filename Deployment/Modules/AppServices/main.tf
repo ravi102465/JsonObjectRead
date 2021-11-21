@@ -19,7 +19,9 @@ resource "azurerm_app_service" "front_webapp" {
 
   site_config {
     windows_fx_version  =   "DOTNETCORE|3.1"
-    
+    ip_restriction {
+      virtual_network_subnet_id = var.appgateway_subnet_id
+    }
     always_on  = true
     ftps_state = "Disabled"
   }

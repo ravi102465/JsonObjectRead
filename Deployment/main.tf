@@ -1,3 +1,9 @@
+resource "azurerm_resource_group" "rg" {
+  name     = "${var.resource_group_name_prefix}-${local.env_name}-rg"
+  location = var.location
+  tags     = local.tags
+}
+
 module "vnet" {
 source                           = "./Modules/Vnet"
   name                             = "${local.service_name}-${local.env_name}-vnet"
@@ -27,6 +33,7 @@ module "app_service" {
   location            = azurerm_resource_group.rg.location
   front_end_subnet_id   = module.vnet.front_end_subnet_id
   application_subnet_id	= module.vnet.app_subnet_id
+  appgateway_subnet_id	= module.vnet.appgateway_subnet_id
   tags = local.tags
 
 }

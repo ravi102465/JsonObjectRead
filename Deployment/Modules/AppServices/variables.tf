@@ -21,6 +21,9 @@ variable "front_end_subnet_id" {
 variable "application_subnet_id" {
 }
 
+variable "appgateway_subnet_id" {
+}
+
 variable "tags" {
 
 }
