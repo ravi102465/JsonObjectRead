@@ -7,7 +7,7 @@ resource "azurerm_virtual_network" "vent" {
 
 resource "azurerm_subnet" "front_subnet" {
   name                 = "front-subnet"
-  resource_group_name  = var.name
+  resource_group_name  = var.resource_group_name
   virtual_network_name = azurerm_virtual_network.vent.name
   address_prefixes     = ["10.0.1.0/24"]
   delegation {
@@ -23,7 +23,7 @@ resource "azurerm_subnet" "front_subnet" {
 
   resource "azurerm_subnet" "app_subnet" {
   name                 = "app-subnet"
-  resource_group_name  = var.name
+  resource_group_name  = var.resource_group_name
   virtual_network_name = azurerm_virtual_network.vent.name
   address_prefixes     = ["10.0.2.0/24"]
   delegation {
@@ -40,14 +40,15 @@ resource "azurerm_subnet" "front_subnet" {
 
   resource "azurerm_subnet" "db_subnet" {
   name                 = "db-subnet"
-  resource_group_name  = var.name
+  resource_group_name  = var.resource_group_name
   virtual_network_name = azurerm_virtual_network.vent.name
   address_prefixes     = ["10.0.3.0/24"]
+  service_endpoints = ["Microsoft.Sql"]
   }
 
 resource "azurerm_subnet" "appgateway_subnet" {
   name                 = "appgateway-subnet"
-  resource_group_name  = var.name
+  resource_group_name  = var.resource_group_name
   virtual_network_name = azurerm_virtual_network.vent.name
   address_prefixes     = ["10.0.4.0/24"]
   }
