@@ -15,7 +15,7 @@ resource "azurerm_sql_database" "sqldatabase" {
   location                         = var.location
   server_name                      = azurerm_sql_server.sqlserver.name
   edition                          = "Standard"
-  requested_service_objective_name = "S1""
+  requested_service_objective_name = "S1"
 
   tags  = var.tags
 }

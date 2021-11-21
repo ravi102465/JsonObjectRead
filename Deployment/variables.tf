@@ -22,7 +22,7 @@ locals {
   service_name                = "test"
   front_web_app_name                = "${local.service_name}-${local.env_name}-front-webapp"
   application_web_app_name          = "${local.service_name}-${local.env_name}-app-webapp"
-  tags_without_cost_center = {
+  tags = {
     environment      = local.env_name
   }
 }

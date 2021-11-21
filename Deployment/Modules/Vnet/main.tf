@@ -32,4 +32,3 @@ resource "azurerm_subnet" "appgateway_subnet" {
   virtual_network_name = azurerm_virtual_network.vent.name
   address_prefixes     = ["10.0.4.0/24"]
   }
-}

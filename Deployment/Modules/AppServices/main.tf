@@ -1,5 +1,5 @@
 resource "azurerm_app_service_plan" "front_app_service_plan" {
-  name                = "${local.service_name}-${local.env_name}-front-asp"
+  name                = "${var.service_name}-${var.env_name}-front-asp"
   location            = var.location
   resource_group_name = var.resource_group_name
   
@@ -11,7 +11,7 @@ resource "azurerm_app_service_plan" "front_app_service_plan" {
 }
 
 resource "azurerm_app_service" "front_webapp" {
-  name                = "${local.service_name}-${local.env_name}-front-webapp"
+  name                = "${var.service_name}-${var.env_name}-front-webapp"
   location            = var.location
   resource_group_name = var.resource_group_name
   app_service_plan_id = azurerm_app_service_plan.front_app_service_plan.id
@@ -31,7 +31,7 @@ resource "azurerm_app_service_virtual_network_swift_connection" "front_webapp_vn
 }
 
 resource "azurerm_app_service_plan" "apptier_app_service_plan" {
-  name                = "${local.service_name}-${local.env_name}-app-asp"
+  name                = "${var.service_name}-${var.env_name}-app-asp"
   location            = var.location
   resource_group_name = var.resource_group_name
   
@@ -43,7 +43,7 @@ resource "azurerm_app_service_plan" "apptier_app_service_plan" {
 }
 
 resource "azurerm_app_service" "apptier_webapp" {
-  name                = "${local.service_name}-${local.env_name}-app-webapp"
+  name                = "${var.service_name}-${var.env_name}-app-webapp"
   location            = var.location
   resource_group_name = var.resource_group_name
   app_service_plan_id = azurerm_app_service_plan.apptier_app_service_plan.id
