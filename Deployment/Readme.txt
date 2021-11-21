@@ -1,0 +1,1 @@
+Current terraform will create 2 webapp and sql db. gateway is still to create.
