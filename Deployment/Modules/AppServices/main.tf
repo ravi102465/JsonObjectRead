@@ -25,6 +25,12 @@ resource "azurerm_app_service" "front_webapp" {
     always_on  = true
     ftps_state = "Disabled"
   }
+
+  app_settings = {
+    "ASPNETCORE_ENVIRONMENT"                               = var.env_name
+    "WEBSITE_ENABLE_SYNC_UPDATE_SITE"                      = "true"
+  }
+  https_only = true
 }
 
 resource "azurerm_app_service_virtual_network_swift_connection" "front_webapp_vnet_integration" {
@@ -61,6 +67,11 @@ resource "azurerm_app_service" "apptier_webapp" {
     always_on  = true
     ftps_state = "Disabled"
   }
+  app_settings = {
+    "ASPNETCORE_ENVIRONMENT"                               = var.env_name
+    "WEBSITE_ENABLE_SYNC_UPDATE_SITE"                      = "true"
+  }
+  https_only = true
 }
 
 resource "azurerm_app_service_virtual_network_swift_connection" "apptier_webapp_vnet_integration" {

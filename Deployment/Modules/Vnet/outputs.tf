@@ -13,3 +13,7 @@ output "db_subnet_id" {
 output "appgateway_subnet_id" {
   value       = azurerm_subnet.appgateway_subnet.id
 }
+
+output "appgateway_vnet_name" {
+  value       = azurerm_virtual_network.vnet.name
+}

@@ -12,6 +12,18 @@ source                           = "./Modules/Vnet"
   tags                             = local.tags
 }
 
+module "appgateway" {
+source                           = "./Modules/AppGateWay"
+  vnet_name                        = module.vnet.appgateway_vnet_name
+  location                         = azurerm_resource_group.rg.location
+  resource_group_name              = azurerm_resource_group.rg.name
+  gateway_subnet_id				   = module.vnet.appgateway_subnet_id
+  env_name                         = local.env_name
+  service_name					   = local.service_name
+  backend_webapp_fqdn			   = [module.app_service.front_end_default_site_hostname]
+  tags                             = local.tags
+}
+
 module "azure_sql" {
   source                           = "./Modules/AzureSql"
   name                             = "${local.service_name}-${local.env_name}-sqlserver"
